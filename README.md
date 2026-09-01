@@ -45,7 +45,7 @@ git push
 3. 사이트 주소는 `mkdocs.yml` 에 이미 설정되어 있습니다.
 
    ```yaml
-   site_url: https://ljk725725-hue.github.io/hayo-wiki/
+   site_url: https://aca-kor-team.github.io/hayo-wiki/
    ```
 
    > `site_url` 의 맨 뒤 경로는 **저장소 이름과 같아야** 합니다.
