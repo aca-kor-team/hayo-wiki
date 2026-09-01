@@ -1,0 +1,5 @@
+# MkDocs 2.0 은 플러그인/테마가 전부 깨지는 호환 불가 변경이 예고돼 있어
+# 1.x 대에 고정합니다. (Material 팀 공지 기준)
+mkdocs>=1.6,<2
+mkdocs-material>=9.7,<10
+mkdocs-glightbox>=0.4

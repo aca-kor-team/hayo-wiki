@@ -1,0 +1,137 @@
+# ============================================================
+#  하요 요리 서버 위키 - MkDocs 설정
+#
+#  로컬 미리보기 :  mkdocs serve      (http://127.0.0.1:8000)
+#  정적 빌드     :  mkdocs build      (site/ 폴더에 생성)
+#  배포          :  main 브랜치에 push 하면 GitHub Actions 가 자동 배포
+# ============================================================
+
+site_name: 하요 요리 서버 위키
+site_description: 하요 마인크래프트 요리 서버의 공식 안내 위키입니다. 접속 방법, 요리 시스템, 레시피, 명령어를 안내합니다.
+site_author: 하요 운영팀
+
+site_url: https://ljk725725-hue.github.io/hayo-wiki/
+repo_url: https://github.com/ljk725725-hue/hayo-wiki
+
+copyright: © 하요 요리 서버
+
+theme:
+  name: material
+  language: ko
+  font:
+    text: Noto Sans KR
+    code: Nanum Gothic Coding   # 영수증 프린터 같은 한글 고정폭
+  icon:
+    logo: material/silverware-fork-knife
+    repo: fontawesome/brands/github
+  features:
+    - navigation.instant       # 페이지 이동을 새로고침 없이 (체감 속도 ↑)
+    - navigation.tracking
+    - navigation.tabs          # 상단 대분류 탭
+    - navigation.sections
+    - navigation.indexes    # 섹션을 누르면 대표 페이지로
+    - navigation.top           # 맨 위로 버튼
+    - navigation.footer        # 이전/다음 페이지
+    - search.suggest
+    - search.highlight
+    - search.share
+    - content.code.copy        # 코드블록 복사 버튼
+    - content.tooltips
+    - toc.follow
+
+  palette:
+    # A안(야간 주방)은 어두운 톤 하나로 갑니다. 밝은 배색은 배너와 어긋납니다.
+    scheme: slate
+    primary: custom
+    accent: custom
+
+extra_css:
+  - stylesheets/extra.css
+
+plugins:
+  - search:
+      # 한국어 형태소 처리를 켭니다. 이 설정을 빼면 한글 검색이 아예 안 걸립니다.
+      # (기본 영어 트리머가 한글을 단어로 보지 않고 잘라내기 때문)
+      lang:
+        - ko
+        - en
+      # 한국어는 공백 단위로만 끊으면 검색이 잘 안 걸립니다.
+      # 구분자를 넓혀서 "육절기로" 같은 조사 붙은 말도 잡히게 합니다.
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+
+  # 이미지 / GIF 를 클릭하면 화면 가득 확대해서 보여줍니다.
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: zoom
+      slide_effect: slide
+      width: 100%
+      height: auto
+      zoomable: true
+      draggable: true
+      auto_caption: true      # 이미지 대체 텍스트를 캡션으로 자동 표시
+      caption_position: bottom
+
+markdown_extensions:
+  - admonition               # !!! note 같은 강조 박스
+  - pymdownx.details         # 접었다 펴는 박스
+  - pymdownx.superfences     # 중첩 코드블록
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true  # 탭 (자바/베드락 안내 분기 등)
+  - pymdownx.keys            # ++shift+f++ → 키캡 표시
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - toc:
+      permalink: "#"
+      toc_depth: 3
+
+nav:
+  - 홈: index.md
+
+  - 접속 방법: start/connect.md
+
+  - 처음 할 것:
+      - start/first-steps.md
+      - 토지 문서: start/land.md
+      - 마을과 야생: start/servers.md
+      - 유용한 아이템: items/index.md
+      - 귀환석: items/return-stone.md
+      - 서버 규칙: start/rules.md
+
+  - 일거리:
+      - work/index.md
+      - 채광: work/mining.md
+      - 농사: work/farming.md
+      - 낚시: work/fishing.md
+      - 목장: work/ranch.md
+
+  - 요리:
+      - cooking/index.md
+      - 레시피 시스템: cooking/recipes.md
+      - 조리 도구: cooking/tools.md
+      - 요리 제출: cooking/submit.md
+
+  - 상점:
+      - shop/index.md
+      - 강화: shop/upgrade.md
+
+  - API: api/index.md
+
+  - 자주 묻는 일:
+      - reference/faq.md
+      - 단축키: reference/keys.md
+      - 명령어 모음: reference/commands.md
+      - 업데이트 노트: changelog.md
+
+extra:
+  # 이 위키는 시청자도 보는 공개 문서입니다.
+  # 참가자 전용 디스코드 초대 링크는 절대 넣지 마세요.
+  generator: false

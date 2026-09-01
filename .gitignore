@@ -1,0 +1,7 @@
+site/
+.cache/
+__pycache__/
+.venv/
+
+# 디자인 시안 (배포에 불필요)
+design-drafts/

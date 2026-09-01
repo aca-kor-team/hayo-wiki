@@ -1,0 +1,707 @@
+/* ============================================================
+   하요 요리 서버 위키 — "야간 주방" 테마 (A안)
+
+   대배너에서 뽑은 팔레트를 그대로 씁니다.
+     어두운 나무 #1b1008 #26170c   중간 나무 #33200f #4a2c14
+     랜턴 주황  #d38a2c            제목 연두 #a5d16a
+     전표 크림  #e5d991            벽돌     #8e3010
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap");
+
+/* ── 색 ─────────────────────────────────────────────────── */
+
+:root,
+[data-md-color-scheme="slate"] {
+  --k-bg:        #1b1008;   /* 주방 바닥 */
+  --k-panel:     #180e06;   /* 좌측 내비 */
+  --k-card:      #26170c;   /* 카드 안쪽 */
+  --k-card-top:  #33200f;   /* 카드 위쪽 (그라데이션) */
+  --k-wood:      #4a2c14;   /* 헤더 나무 */
+  --k-wood-dark: #120a04;   /* 나무 그림자 */
+  --k-line:      #462c14;   /* 테두리 */
+  --k-line-soft: #2e1c0c;   /* 옅은 구분선 */
+
+  --k-text:      #ecdcc6;   /* 본문 */
+  --k-text-soft: #a98e6b;   /* 보조 설명 */
+  --k-text-mid:  #c2a279;   /* 비활성 메뉴 */
+
+  --k-lantern:   #d38a2c;   /* 랜턴 주황 */
+  --k-leaf:      #a5d16a;   /* 제목 연두 */
+  --k-cream:     #e5d991;   /* 전표 크림 */
+  --k-brick:     #c8532a;   /* 벽돌 */
+
+  --k-shadow:    rgba(0, 0, 0, .45);
+
+  /* 색 위에 글씨를 얹는 뱃지는 대비를 따로 잡습니다 */
+  --k-badge-ink:   #1b1008;
+  --k-badge-red:   #e2864c;
+  --k-badge-green: #a5d16a;
+
+  --md-default-bg-color: var(--k-bg);
+  --md-default-fg-color: var(--k-text);
+  --md-typeset-color:    var(--k-text);
+  --md-typeset-a-color:  var(--k-lantern);
+}
+
+[data-md-color-primary="custom"] {
+  --md-primary-fg-color:        #33200f;
+  --md-primary-fg-color--light: #4a2c14;
+  --md-primary-fg-color--dark:  #221408;
+  --md-primary-bg-color:        #f0e2ca;
+  --md-primary-bg-color--light: rgba(240, 226, 202, .7);
+}
+
+[data-md-color-accent="custom"] {
+  --md-accent-fg-color:              #e9a95a;
+  --md-accent-fg-color--transparent: rgba(211, 138, 44, .12);
+  --md-accent-bg-color:              #1b1008;
+  --md-accent-bg-color--light:       rgba(27, 16, 8, .7);
+}
+
+/* ── 바탕 ───────────────────────────────────────────────── */
+
+.md-main,
+.md-container {
+  background: var(--k-bg);
+}
+
+.md-content__inner {
+  padding: 0 1.4rem 3rem;
+}
+
+/* 배너는 본문 여백 밖까지 꽉 차게 */
+.md-typeset img.banner {
+  display: block;
+  width: calc(100% + 2.8rem);
+  max-width: none;
+  margin: 0 -1.4rem 1.6rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: 0 4px 16px var(--k-shadow);
+}
+
+/* ── 헤더: 나무 간판 ────────────────────────────────────── */
+
+.md-header {
+  background: linear-gradient(180deg, var(--k-wood) 0%, #3d2512 100%);
+  border-bottom: 0;
+  box-shadow: none;
+}
+
+.md-header__title {
+  font-family: "Do Hyeon", "Noto Sans KR", sans-serif;
+  font-size: 1.05rem;
+  color: var(--k-leaf);
+}
+
+.md-header__topic {
+  font-weight: 400;
+}
+
+/* 상단 탭: 서랍에 꽂힌 책갈피처럼 위쪽만 둥글게 */
+.md-tabs {
+  background: #33200f;
+  border-bottom: 3px solid var(--k-wood-dark);
+  font-family: "Do Hyeon", "Noto Sans KR", sans-serif;
+  height: auto;
+  padding-top: .2rem;
+  overflow: visible;
+}
+
+.md-tabs__list {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.md-tabs__item {
+  display: flex;
+  align-items: flex-end;
+  height: auto;
+  padding: 0;
+}
+
+.md-tabs__link {
+  display: block;
+  margin: 0;
+  padding: .38rem .8rem .42rem;
+  background: #241608;
+  border: 1px solid #5c3b1d;
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  color: var(--k-text-mid);
+  font-size: .78rem;
+  line-height: 1.4;
+  opacity: 1;
+  white-space: nowrap;
+  transition: background .15s ease, color .15s ease, padding-bottom .15s ease;
+}
+
+.md-tabs__link:hover {
+  background: #3a2410;
+  color: var(--k-cream);
+  padding-bottom: .55rem;
+}
+
+/* 현재 탭에 랜턴 불이 켜집니다 */
+.md-tabs__item--active .md-tabs__link {
+  background: var(--k-lantern);
+  border-color: #eab463;
+  color: #1b1008;
+  font-weight: 400;
+  padding-bottom: .58rem;
+}
+
+.md-tabs__item--active .md-tabs__link:hover {
+  background: #e09a3c;
+  color: #1b1008;
+}
+
+.md-search__form {
+  border-radius: 3px;
+  background: #22150a;
+  border: 1px solid #5c3b1d;
+}
+
+.md-search__form:hover {
+  background: #2a1a0d;
+}
+
+.md-search__input {
+  font-size: .76rem;
+}
+
+.md-search__input::placeholder {
+  color: #8a6c48;
+}
+
+/* ── 좌측 내비 ──────────────────────────────────────────── */
+
+.md-sidebar--primary {
+  background: var(--k-panel);
+}
+
+.md-nav {
+  font-size: .72rem;
+  color: var(--k-text-soft);
+}
+
+.md-nav__title {
+  font-family: "Do Hyeon", "Noto Sans KR", sans-serif;
+  color: var(--k-lantern);
+  background: transparent;
+  box-shadow: none;
+}
+
+.md-nav__link {
+  color: var(--k-text-soft);
+}
+
+.md-nav__link:hover,
+.md-nav__link:focus {
+  color: var(--k-cream);
+}
+
+.md-nav__item .md-nav__link--active,
+.md-nav__link--active {
+  color: var(--k-leaf);
+  font-weight: 700;
+}
+
+.md-nav--secondary .md-nav__title {
+  font-size: .7rem;
+}
+
+/* ── 본문 타이포 ────────────────────────────────────────── */
+
+.md-typeset {
+  line-height: 1.85;
+  color: var(--k-text);
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  font-family: "Do Hyeon", "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  letter-spacing: .005em;
+}
+
+.md-typeset h1 {
+  font-size: 1.55rem;
+  color: var(--k-leaf);
+  margin-bottom: .8rem;
+  padding-bottom: .5rem;
+  border-bottom: 2px solid var(--k-line);
+}
+
+.md-typeset h2 {
+  font-size: 1.15rem;
+  color: var(--k-cream);
+  margin-top: 2.3rem;
+  padding-bottom: .35rem;
+  border-bottom: 1px solid var(--k-line-soft);
+}
+
+.md-typeset h2::before {
+  content: "\25B8\00A0";
+  color: var(--k-lantern);
+}
+
+.md-typeset h3 {
+  font-size: .98rem;
+  color: var(--k-cream);
+}
+
+.md-typeset strong {
+  color: #f0e2ca;
+}
+
+.md-typeset hr {
+  border-bottom-color: var(--k-line-soft);
+}
+
+/* ── 카드: 랜턴 불빛 받는 나무 팻말 ─────────────────────── */
+
+.md-typeset .grid.cards > ul {
+  gap: 1.1rem;
+}
+
+.md-typeset .grid.cards > ul > li {
+  background: linear-gradient(180deg, var(--k-card-top) 0%, var(--k-card) 100%);
+  border: 1px solid #55341a;
+  border-radius: 3px;
+  padding: 1rem 1.1rem 1.2rem;
+  box-shadow: 0 3px 0 var(--k-wood-dark);
+  transition: translate .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+
+.md-typeset .grid.cards > ul > li:hover {
+  translate: 0 -3px;
+  box-shadow: 0 6px 0 var(--k-wood-dark);
+  border-color: var(--k-lantern);
+}
+
+.md-typeset .grid.cards > ul > li > hr {
+  border: 0;
+  border-top: 1px solid var(--k-line);
+  margin: .6rem 0;
+}
+
+.md-typeset .grid.cards > ul > li strong {
+  font-family: "Do Hyeon", "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: .98rem;
+  color: #f0e2ca;
+}
+
+/* 카드 머리 아이콘은 랜턴색 */
+.md-typeset .grid.cards > ul > li > p:first-of-type .twemoji,
+.md-typeset .grid.cards > ul > li > p:first-of-type svg {
+  fill: var(--k-lantern);
+  height: 1.15rem;
+  width: 1.15rem;
+}
+
+/* ── 단계 흐름 ──────────────────────────────────────────── */
+
+.md-typeset .flow > ol {
+  counter-reset: flow;
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+  display: grid;
+  gap: .7rem;
+}
+
+.md-typeset .flow > ol > li {
+  counter-increment: flow;
+  position: relative;
+  margin: 0;
+  padding: .85rem 1rem .85rem 3.2rem;
+  background: var(--k-card);
+  border: 1px solid var(--k-line);
+  border-top: 3px solid var(--k-lantern);
+  list-style: none;
+  transition: translate .15s ease, border-color .15s ease;
+}
+
+.md-typeset .flow > ol > li:nth-child(2n) {
+  border-top-color: var(--k-leaf);
+}
+
+.md-typeset .flow > ol > li:hover {
+  translate: 3px 0;
+}
+
+/* 순번은 화덕에 찍은 낙인처럼 */
+.md-typeset .flow > ol > li::before {
+  content: counter(flow);
+  position: absolute;
+  left: .9rem;
+  top: .95rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: var(--k-wood);
+  border: 1px solid #6b4220;
+  color: var(--k-cream);
+  font-family: "Do Hyeon", "Noto Sans KR", sans-serif;
+  font-size: .78rem;
+  display: grid;
+  place-items: center;
+}
+
+.md-typeset .flow .flow-title {
+  font-family: "Do Hyeon", "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: .95rem;
+  color: #f0e2ca;
+}
+
+.md-typeset .flow > ol > li > p {
+  margin: 0;
+  font-size: .78rem;
+  color: var(--k-text-soft);
+}
+
+.md-typeset .flow > ol > li > p:first-child {
+  margin-bottom: .1rem;
+}
+
+.md-typeset .flow svg {
+  height: .95rem;
+  vertical-align: -.15rem;
+  fill: var(--k-lantern);
+}
+
+/* ── 강조 박스 ──────────────────────────────────────────── */
+
+.md-typeset .admonition,
+.md-typeset details {
+  border: 1px solid var(--k-line);
+  border-left: 4px solid var(--k-lantern);
+  border-radius: 0;
+  background: var(--k-card);
+  box-shadow: none;
+  font-size: .76rem;
+  color: var(--k-text);
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+  font-family: "Do Hyeon", "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  background: rgba(0, 0, 0, .22);
+  color: #f0e2ca;
+}
+
+.md-typeset .admonition-title::before,
+.md-typeset summary::before {
+  background-color: var(--k-lantern);
+}
+
+.md-typeset .admonition.tip,
+.md-typeset .admonition.note,
+.md-typeset details.tip,
+.md-typeset details.note {
+  border-left-color: var(--k-leaf);
+}
+
+.md-typeset .tip > .admonition-title::before,
+.md-typeset .note > .admonition-title::before,
+.md-typeset details.tip > summary::before,
+.md-typeset details.note > summary::before {
+  background-color: var(--k-leaf);
+}
+
+.md-typeset .admonition.warning,
+.md-typeset details.warning {
+  border-left-color: #e0a33a;
+}
+
+.md-typeset .warning > .admonition-title::before,
+.md-typeset details.warning > summary::before {
+  background-color: #e0a33a;
+}
+
+.md-typeset .admonition.danger,
+.md-typeset details.danger {
+  border-left-color: var(--k-brick);
+  background: #2a1409;
+}
+
+.md-typeset .danger > .admonition-title::before,
+.md-typeset details.danger > summary::before {
+  background-color: var(--k-brick);
+}
+
+.md-typeset .admonition.info,
+.md-typeset .admonition.question,
+.md-typeset details.question {
+  border-left-color: var(--k-lantern);
+}
+
+/* ── 표: 주문서 ─────────────────────────────────────────── */
+
+.md-typeset__table {
+  width: 100%;
+}
+
+.md-typeset table:not([class]) {
+  font-size: .76rem;
+  border: 1px solid var(--k-line);
+  background: transparent;
+}
+
+.md-typeset table:not([class]) th {
+  font-family: "Do Hyeon", "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  background: #3d2512;
+  color: var(--k-cream);
+  border: 0;
+  padding: .55rem .8rem;
+}
+
+.md-typeset table:not([class]) td {
+  border: 0;
+  border-top: 1px solid var(--k-line-soft);
+  padding: .55rem .8rem;
+  color: var(--k-text);
+}
+
+.md-typeset table:not([class]) tr:nth-child(2n) td {
+  background: #20140a;
+}
+
+.md-typeset table:not([class]) tr:hover td {
+  background: #2c1c0e;
+}
+
+/* ── 목록 ───────────────────────────────────────────────── */
+
+.md-typeset ul:not([class]) > li {
+  list-style-type: square;
+}
+
+.md-typeset ul:not([class]) > li::marker,
+.md-typeset ol:not([class]) > li::marker {
+  color: var(--k-lantern);
+}
+
+.md-typeset .grid.cards > ul > li,
+.md-typeset .flow > ol > li {
+  list-style: none;
+}
+
+/* ── 코드 ───────────────────────────────────────────────── */
+
+.md-typeset code {
+  border-radius: 2px;
+  background: #241608;
+  color: var(--k-cream);
+  border: 1px solid var(--k-line-soft);
+  padding: .1em .35em;
+}
+
+.md-typeset pre > code {
+  background: #140c05;
+  border: 1px solid var(--k-line-soft);
+  color: var(--k-text);
+}
+
+.md-typeset .highlight {
+  border-radius: 0;
+}
+
+/* ── 단축키 키캡 ────────────────────────────────────────── */
+
+.md-typeset kbd {
+  display: inline-block;
+  min-width: 1.6em;
+  padding: .1em .5em;
+  background: var(--k-card-top);
+  border: 1px solid #6b4220;
+  border-radius: 3px;
+  box-shadow: 0 2px 0 var(--k-wood-dark);
+  color: var(--k-cream);
+  font-family: var(--md-code-font-family), monospace;
+  font-size: .78rem;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+  vertical-align: text-bottom;
+}
+
+/* ── 인게임 채팅 ────────────────────────────────────────── */
+
+.mc-chat {
+  font-family: var(--md-code-font-family), monospace;
+  background: #0d0906;
+  color: #ff5555;
+  padding: .7rem 1rem;
+  font-size: .78rem;
+  white-space: pre-wrap;
+  margin: 1em 0;
+  border-left: 4px solid var(--k-line);
+}
+
+.mc-chat.green  { color: #55ff55; }
+.mc-chat.yellow { color: #ffff55; }
+.mc-chat.gray   { color: #aaaaaa; }
+
+/* ── 잠금/해금 뱃지 ─────────────────────────────────────── */
+
+.badge {
+  display: inline-block;
+  padding: .1rem .5rem;
+  font-family: "Do Hyeon", "Noto Sans KR", sans-serif;
+  font-size: .74rem;
+  color: var(--k-badge-ink);
+  vertical-align: middle;
+}
+
+.badge.locked   { background: var(--k-badge-red); }
+.badge.unlocked { background: var(--k-badge-green); }
+
+/* ── 인용문 ─────────────────────────────────────────────── */
+
+.md-typeset blockquote {
+  border-left: 4px solid var(--k-wood);
+  background: var(--k-card);
+  color: var(--k-text-soft);
+  padding: .6rem .9rem;
+  margin-left: 0;
+}
+
+/* ── 탭 (자바/베드락 등 분기) ───────────────────────────── */
+
+.md-typeset .tabbed-labels > label {
+  font-family: "Do Hyeon", "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  font-size: .78rem;
+  color: var(--k-text-soft);
+}
+
+.md-typeset .tabbed-set > input:checked + label {
+  color: var(--k-lantern);
+  border-color: var(--k-lantern);
+}
+
+/* ── 이미지 ─────────────────────────────────────────────── */
+
+.md-typeset a.glightbox img {
+  background: var(--k-card-top);
+  padding: 6px;
+  border: 1px solid var(--k-line);
+  box-shadow: 0 3px 0 var(--k-wood-dark);
+  transition: translate .15s ease, border-color .15s ease;
+}
+
+.md-typeset a.glightbox:hover img {
+  translate: 0 -2px;
+  border-color: var(--k-lantern);
+}
+
+.md-typeset figcaption {
+  font-size: .72rem;
+  color: var(--k-text-soft);
+}
+
+/* ── 푸터 ───────────────────────────────────────────────── */
+
+.md-footer {
+  background: #33200f;
+  border-top: 3px solid var(--k-wood-dark);
+}
+
+.md-footer-meta {
+  background: var(--k-wood-dark);
+  font-size: .7rem;
+}
+
+.md-footer__link {
+  transition: translate .15s ease;
+}
+
+.md-footer__link:hover {
+  translate: 0 -2px;
+}
+
+.md-footer__title {
+  font-family: "Do Hyeon", "Noto Sans KR", sans-serif;
+  font-weight: 400;
+}
+
+/* ── 스크롤바 ───────────────────────────────────────────── */
+
+* {
+  scrollbar-color: var(--k-wood) var(--k-bg);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--k-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--k-wood);
+  border: 2px solid var(--k-bg);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--k-lantern);
+}
+
+/* ── 좁은 화면 ──────────────────────────────────────────── */
+
+@media screen and (max-width: 76.1875em) {
+  .md-content__inner {
+    padding: 0 .9rem 2.4rem;
+  }
+  .md-typeset img.banner {
+    width: calc(100% + 1.8rem);
+    margin-left: -.9rem;
+    margin-right: -.9rem;
+  }
+  .md-nav--primary .md-nav__title {
+    background: #33200f;
+    color: var(--k-cream);
+  }
+  .md-nav--primary {
+    background: var(--k-panel);
+  }
+}
+
+@media screen and (max-width: 44.9375em) {
+  .md-typeset h1 {
+    font-size: 1.3rem;
+  }
+  .md-typeset h2 {
+    font-size: 1.02rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .md-typeset .grid.cards > ul > li,
+  .md-typeset .flow > ol > li,
+  .md-typeset a.glightbox img,
+  .md-footer__link {
+    transition: none;
+  }
+  .md-typeset .grid.cards > ul > li:hover,
+  .md-typeset .flow > ol > li:hover,
+  .md-typeset a.glightbox:hover img,
+  .md-footer__link:hover {
+    translate: none;
+  }
+}
