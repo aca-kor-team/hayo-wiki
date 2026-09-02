@@ -13,7 +13,7 @@ description: 대장간에서 강화석으로 도구를 강화하는 방법.
 
 [:octicons-arrow-right-24: 채광 보기](../work/mining.md)
 
-별풍선 **랜덤 상자**에서도 나옵니다.
+별풍선 **랜덤 박스**에서도 나옵니다.
 
 [:octicons-arrow-right-24: 별풍선 보기](../api/index.md)
 
