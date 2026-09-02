@@ -11,7 +11,6 @@ site_description: 하요 마인크래프트 요리 서버의 공식 안내 위�
 site_author: 하요 운영팀
 
 site_url: https://aca-kor-team.github.io/hayo-wiki/
-repo_url: https://github.com/aca-kor-team/hayo-wiki
 
 copyright: © ACA
 
@@ -23,7 +22,6 @@ theme:
     code: Nanum Gothic Coding   # 영수증 프린터 같은 한글 고정폭
   icon:
     logo: material/silverware-fork-knife
-    repo: fontawesome/brands/github
   features:
     - navigation.instant       # 페이지 이동을 새로고침 없이 (체감 속도 ↑)
     - navigation.tracking
