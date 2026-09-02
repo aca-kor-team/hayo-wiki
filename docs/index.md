@@ -55,6 +55,14 @@ description: 하요 요리 서버 공식 위키. 시청자가 별풍선으로 �
 
     [:octicons-arrow-right-24: 첫 순서 보기](start/first-steps.md)
 
+-   :material-gavel: **서버 규칙**
+
+    ---
+
+    꼭 지켜야 할 금지 행위를 정리했습니다.
+
+    [:octicons-arrow-right-24: 규칙 보기](start/rules.md)
+
 -   :material-hammer-wrench: **일거리**
 
     ---
